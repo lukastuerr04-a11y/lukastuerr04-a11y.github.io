@@ -3,8 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lukas Türr</title>
+
+  <!-- SEO -->
+  <title>Lukas Türr – Student, Frankfurt School of Finance & Management</title>
+  <meta name="description" content="Lukas Türr – Student im Bachelor Business Administration an der Frankfurt School of Finance & Management, Schwerpunkt Banking & Finance. Engagement in Politik, Entrepreneurship und Sport.">
+  <meta name="keywords" content="Lukas Türr, Frankfurt School, Banking Finance, Entrepreneurship, JU Mittelfranken, CSU, flatexDEGIRO, Student">
+  <meta name="author" content="Lukas Türr">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://lukas-tuerr.de">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Lukas Türr">
+  <meta property="og:description" content="Student im Bachelor Business Administration an der Frankfurt School of Finance & Management.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lukas-tuerr.de">
+
+  <!-- Schema.org strukturierte Daten -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lukas Türr",
+    "url": "https://lukas-tuerr.de",
+    "email": "lukas.tuerr@fs-students.de",
+    "sameAs": [
+      "https://linkedin.com/in/lukastuerrde",
+      "https://instagram.com/tuerri_mtb"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Frankfurt School of Finance & Management"
+    }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --navy:  #0a1628;
@@ -32,8 +66,8 @@
       height: 76px;
       background: transparent;
       backdrop-filter: none;
-      transition: background 0.4s ease, backdrop-filter 0.4s ease;
       border-bottom: 1px solid transparent;
+      transition: background 0.4s ease, border-color 0.4s ease;
       padding: 0;
     }
     .nav-left  { display: contents; }
@@ -52,7 +86,7 @@
     }
     nav a:hover { color: var(--blue); }
     nav a:nth-child(1) { text-align: left;  padding-left: 50px; }
-    nav a:nth-child(5) { text-align: right; padding-right: 44px; }
+    nav a:nth-child(5) { text-align: right; padding-right: 50px; }
     .nav-logo {
       flex: 1;
       font-family: 'Playfair Display', serif;
@@ -67,7 +101,46 @@
       white-space: nowrap;
     }
 
-    /* ══ HERO ══ */
+    /* Hamburger Menu (Mobile) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 10px;
+      margin-right: 20px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 76px; left: 0; right: 0;
+      background: rgba(10,22,40,0.98);
+      backdrop-filter: blur(14px);
+      z-index: 99;
+      flex-direction: column;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(36,104,240,0.2);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Crimson Pro', serif;
+      font-size: 22px;
+      padding: 14px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue); }
+
+    /* ── HERO ── */
     #start {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -96,9 +169,9 @@
     }
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 4.5vw, 66px);
+      font-size: clamp(28px, 3.5vw, 56px);
       font-weight: 900;
-      line-height: 1.06;
+      line-height: 1.1;
       color: var(--blue);
       text-transform: uppercase;
       letter-spacing: -1px;
@@ -106,8 +179,7 @@
     }
     .hero-right {
       position: fixed;
-      top: 0;
-      right: 0;
+      top: 0; right: 0;
       width: 50%;
       height: 100vh;
       overflow: hidden;
@@ -128,13 +200,18 @@
       background: linear-gradient(to right, var(--navy) 0%, transparent 20%);
     }
 
-    /* ══ PORTFOLIO ══ */
-    #portfolio {
-      padding: 100px 80px;
-      border-top: 1px solid rgba(36,104,240,0.1);
+    /* ── SECTIONS ── */
+    section {
+      scroll-margin-top: 76px;
       position: relative;
       z-index: 2;
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfolio {
+      padding: 100px 80px;
       background: var(--navy);
+      border-top: 1px solid rgba(36,104,240,0.1);
     }
     .portfolio-item {
       border-top: 1px solid rgba(255,255,255,0.1);
@@ -153,7 +230,7 @@
     .pi-header:hover .pi-plus  { color: var(--blue); }
     .pi-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(28px, 3.8vw, 56px);
+      font-size: clamp(24px, 3.8vw, 56px);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: -0.5px;
@@ -173,27 +250,26 @@
     .pi-body {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
+      transition: max-height 0.5s ease, padding 0.3s ease;
     }
     .pi-body.open {
-      max-height: 400px;
+      max-height: 600px;
       padding-bottom: 36px;
     }
     .pi-body p {
       font-size: 18px;
       line-height: 1.85;
-      color: rgba(255,255,255,0.72);
-      max-width: 720px;
-      margin-bottom: 10px;
+      color: rgba(255,255,255,0.75);
+      max-width: 760px;
+      margin-bottom: 12px;
     }
+    .pi-body strong { color: var(--white); font-weight: 600; }
 
-    /* ══ VITA ══ */
+    /* ── VITA ── */
     #vita {
       padding: 100px 80px;
       background: var(--navy2);
       border-top: 1px solid rgba(36,104,240,0.1);
-      position: relative;
-      z-index: 2;
     }
     .vita-grid {
       display: grid;
@@ -231,7 +307,7 @@
       margin-top: 4px;
     }
 
-    /* ══ KONTAKT ══ */
+    /* ── KONTAKT ── */
     #kontakt {
       min-height: 80vh;
       display: flex;
@@ -241,13 +317,11 @@
       padding: 100px 80px;
       text-align: center;
       border-top: 1px solid rgba(36,104,240,0.1);
-      position: relative;
-      z-index: 2;
       background: var(--navy);
     }
     .kontakt-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(40px, 6vw, 80px);
+      font-size: clamp(36px, 6vw, 80px);
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1.05;
@@ -277,10 +351,7 @@
       padding: 14px 38px;
       transition: all 0.25s;
     }
-    .kontakt-link:hover {
-      background: var(--blue);
-      color: var(--white);
-    }
+    .kontakt-link:hover { background: var(--blue); color: var(--white); }
 
     /* ── FOOTER ── */
     footer {
@@ -292,11 +363,7 @@
       position: relative;
       z-index: 2;
     }
-    footer p {
-      font-size: 12px;
-      color: var(--grey);
-      letter-spacing: 1px;
-    }
+    footer p { font-size: 12px; color: var(--grey); letter-spacing: 1px; }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
@@ -304,22 +371,87 @@
       to   { opacity:1; transform:translateY(0); }
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 860px) {
-      nav { padding: 0 20px; }
-      .nav-left, .nav-right { padding: 0 20px; }
-      #start { grid-template-columns: 1fr; }
-      .hero-right { height: 55vw; }
-      #portfolio, #vita, #kontakt { padding: 80px 24px; }
-      .vita-grid { grid-template-columns: 1fr; gap: 40px; }
-      footer { padding: 16px 24px; }
+    /* ══════════════════════════════
+       MOBILE OPTIMIERUNG
+    ══════════════════════════════ */
+    @media (max-width: 768px) {
+
+      /* Nav Mobile */
+      nav {
+        justify-content: space-between;
+        padding: 0;
+        background: rgba(10,22,40,0.97) !important;
+        border-bottom-color: rgba(36,104,240,0.13) !important;
+      }
+      .nav-left, .nav-right { display: none; }
+      .nav-logo {
+        padding-left: 24px;
+        font-size: 18px;
+        letter-spacing: 3px;
+        flex: none;
+        text-align: left;
+      }
+      .hamburger { display: flex; }
+
+      /* Hero Mobile */
+      #start {
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+      }
+      .hero-right {
+        position: relative;
+        width: 100%;
+        height: 55vw;
+        min-height: 260px;
+      }
+      .hero-right::after {
+        background: linear-gradient(to bottom, var(--navy) 0%, transparent 30%);
+      }
+      .hero-left {
+        padding: 100px 28px 60px;
+        order: 2;
+      }
+      .hero-title {
+        font-size: clamp(30px, 8vw, 48px);
+      }
+
+      /* Portfolio Mobile */
+      #portfolio {
+        padding: 70px 28px;
+      }
+      .pi-title {
+        font-size: clamp(22px, 6vw, 36px);
+      }
+      .pi-body p { font-size: 16px; }
+
+      /* Vita Mobile */
+      #vita {
+        padding: 70px 28px;
+      }
+      .vita-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .vita-text { font-size: 16px; }
+
+      /* Kontakt Mobile */
+      #kontakt {
+        padding: 70px 28px;
+        min-height: auto;
+      }
+      .kontakt-title { font-size: clamp(32px, 8vw, 52px); }
+      .kontakt-sub { font-size: 17px; }
+      .kontakt-links { flex-direction: column; align-items: center; }
+      .kontakt-link { width: 100%; max-width: 280px; text-align: center; }
+
+      footer { padding: 16px 24px; flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<!-- NAV Desktop -->
+<nav id="mainNav">
   <div class="nav-left">
     <a href="#start">Start</a>
     <a href="#portfolio">Portfolio</a>
@@ -331,16 +463,25 @@
     <a href="#vita">Vita</a>
     <a href="#kontakt">Kontakt</a>
   </div>
+  <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#start"     onclick="closeMenu()">Start</a>
+  <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+  <a href="#vita"      onclick="closeMenu()">Vita</a>
+  <a href="#kontakt"   onclick="closeMenu()">Kontakt</a>
+</div>
+
 <!-- ══ START ══ -->
-<section id="start">
+<section id="start" style="border:none; scroll-margin-top:0">
   <div class="hero-left">
     <div class="hero-tag">Willkommen</div>
     <h1 class="hero-title">
-      DEIN MOTTO<br>
-      KOMMT<br>
-      HIER HIN.
+      Was bleibt,<br>ist nicht der<br>schnelle Erfolg,<br>sondern der<br>ehrliche Weg.
     </h1>
   </div>
   <div class="hero-right">
@@ -357,8 +498,8 @@
       <div class="pi-plus">+</div>
     </div>
     <div class="pi-body">
-      <p>Hier kommt dein Text zu politischem Engagement, Ehrenämtern, Mitgliedschaften oder politischen Projekten.</p>
-      <p>Was hast du bisher in diesem Bereich gemacht? Welche Überzeugungen treiben dich an?</p>
+      <p>Lukas Türr engagiert sich seit Jahren aktiv in der Kommunal- und Jugendpolitik. Als <strong>Beisitzer im Bezirksvorstand der Jungen Union Mittelfranken</strong> sowie als <strong>Schriftführer im Kreisverband Weißenburg-Gunzenhausen</strong> trägt er Verantwortung auf mehreren politischen Ebenen.</p>
+      <p>Auf Ortsebene ist er <strong>Beisitzer im CSU-Ortsverband Pleinfeld</strong> und <strong>stellvertretender Vorsitzender der Jungen Union Pleinfeld</strong>. Bei der vergangenen Gemeinderatswahl kandidierte er als Gemeinderatskandidat und erzielte <strong>853 Stimmen</strong> — ein starkes Ergebnis, das sein Vertrauen in der Region widerspiegelt.</p>
     </div>
   </div>
 
@@ -368,8 +509,8 @@
       <div class="pi-plus">+</div>
     </div>
     <div class="pi-body">
-      <p>Frankfurt School of Finance & Management — was studierst du, welche Schwerpunkte, welche Ziele?</p>
-      <p>Auslandssemester, Projekte, Auszeichnungen — alles was dich als Studenten auszeichnet.</p>
+      <p>An der <strong>Frankfurt School of Finance & Management</strong> studiert Lukas Türr im <strong>Bachelor Business Administration</strong> mit Schwerpunkt Banking & Finance — einem Studiengang, dem er mit echter Begeisterung nachgeht. Finanzmärkte, wirtschaftliche Zusammenhänge und unternehmerisches Denken sind nicht nur Studienstoff, sondern echte Leidenschaft.</p>
+      <p>Neben dem Studium bringt er sich aktiv in die Hochschulgemeinschaft ein: Als <strong>Senior Member des Event Teams von FS Entrepreneurship</strong> organisiert er Veranstaltungen auf höchstem Niveau — darunter eine mehrtägige Delegationsreise nach Berlin. Als <strong>Head of Training bei FS Golf</strong> leitet er die Golfsportinitiative der Frankfurt School, und bei <strong>FS Charity</strong> engagiert er sich für gemeinnützige Projekte der Hochschule.</p>
     </div>
   </div>
 
@@ -379,8 +520,8 @@
       <div class="pi-plus">+</div>
     </div>
     <div class="pi-body">
-      <p>Praktika, Werkstudentenjobs, eigene Projekte — dein beruflicher Werdegang bisher.</p>
-      <p>Was hast du gelernt? Welche Branchen interessieren dich?</p>
+      <p>Bei der <strong>flatexDEGIRO AG</strong> — Europas größtem Online-Broker — durchläuft Lukas Türr im Rahmen eines Kooperationsstudiums mit der Frankfurt School ein breites <strong>Rotationsprogramm</strong>. Von Treasury über Internal Audit und Eventmarketing bis hin zu Produktmanagement — er sammelt Einblicke in die gesamte Breite eines börsennotierten Finanzunternehmens.</p>
+      <p>Was ihn antreibt: das Verständnis dafür, wie Finanzmärkte wirklich funktionieren — nicht nur theoretisch, sondern hautnah in der täglichen Praxis eines der führenden europäischen Finanzinstitute.</p>
     </div>
   </div>
 
@@ -390,8 +531,7 @@
       <div class="pi-plus">+</div>
     </div>
     <div class="pi-body">
-      <p>Was treibst du in deiner Freizeit? Sport, Reisen, Musik, ehrenamtliches Engagement?</p>
-      <p>Was macht dich als Person aus — abseits von Studium und Beruf?</p>
+      <p>Lukas Türr ist ein leidenschaftlicher Outdoorsportler. Seit seinem vierten Lebensjahr spielt er <strong>Fußball</strong>, im Winter zieht es ihn auf die Skipisten. Auf zwei Rädern ist er als <strong>Mountainbiker und Rennradfahrer</strong> unterwegs, und auf dem Wasser segelt er am idyllischen <strong>Brombachsee</strong>. Seinen Ausgleich findet er außerdem auf dem Golfplatz — mit echter Begeisterung für das Spiel.</p>
     </div>
   </div>
 
@@ -403,37 +543,37 @@
     <div class="vita-block">
       <h3>Ausbildung</h3>
       <div class="vita-entry">
-        <div class="vita-year">Seit 20XX</div>
+        <div class="vita-year">Seit 08.2024</div>
         <div class="vita-text">Frankfurt School of Finance & Management</div>
-        <div class="vita-sub">Bachelor of Science — [Studiengang]</div>
+        <div class="vita-sub">Bachelor Business Administration / Banking & Finance · Note: 1,9 (Top 15%)</div>
       </div>
       <div class="vita-entry">
-        <div class="vita-year">20XX – 20XX</div>
-        <div class="vita-text">[Deine Schule / Abitur]</div>
-        <div class="vita-sub">Allgemeine Hochschulreife</div>
+        <div class="vita-year">09.2023 – 06.2024</div>
+        <div class="vita-text">Berufsoberschule Weißenburg</div>
+        <div class="vita-sub">Abitur · Note: 2,1 · Klassensprecher & Schülersprecher</div>
       </div>
       <div class="vita-entry">
-        <div class="vita-year">20XX</div>
-        <div class="vita-text">[Weiterer Bildungsweg]</div>
-        <div class="vita-sub">[Details]</div>
+        <div class="vita-year">09.2020 – 08.2022</div>
+        <div class="vita-text">Ausbildung Finanzamt Gunzenhausen</div>
+        <div class="vita-sub">Ausbildung zum Finanzwirt</div>
       </div>
     </div>
     <div class="vita-block">
       <h3>Berufliche Stationen</h3>
       <div class="vita-entry">
-        <div class="vita-year">Seit 20XX</div>
-        <div class="vita-text">[Aktuelle Tätigkeit / Praktikum]</div>
-        <div class="vita-sub">[Unternehmen / Organisation]</div>
+        <div class="vita-year">Seit 09.2024</div>
+        <div class="vita-text">flatexDEGIRO AG, Frankfurt am Main</div>
+        <div class="vita-sub">Duales Studium · Rotationsprogramm (Treasury, Internal Audit, Eventmarketing, Produktmanagement)</div>
       </div>
       <div class="vita-entry">
-        <div class="vita-year">20XX – 20XX</div>
-        <div class="vita-text">[Frühere Tätigkeit]</div>
-        <div class="vita-sub">[Unternehmen / Organisation]</div>
+        <div class="vita-year">06.2024 – 07.2024</div>
+        <div class="vita-text">Deutscher Bundestag, Berlin</div>
+        <div class="vita-sub">Praktikum bei MdB Artur Auernhammer</div>
       </div>
       <div class="vita-entry">
-        <div class="vita-year">20XX</div>
-        <div class="vita-text">[Weitere Station]</div>
-        <div class="vita-sub">[Details]</div>
+        <div class="vita-year">09.2022 – 08.2023</div>
+        <div class="vita-text">Finanzamt Traunstein</div>
+        <div class="vita-sub">Finanzwirt</div>
       </div>
     </div>
   </div>
@@ -447,9 +587,9 @@
     Ich freue mich über jede Nachricht.
   </div>
   <div class="kontakt-links">
-    <a href="mailto:lukastuerr04@gmail.com" class="kontakt-link">E-Mail</a>
-    <a href="https://linkedin.com/in/lukastuerr" class="kontakt-link" target="_blank">LinkedIn</a>
-    <a href="https://instagram.com/lukastuerr" class="kontakt-link" target="_blank">Instagram</a>
+    <a href="mailto:lukas.tuerr@fs-students.de" class="kontakt-link">E-Mail</a>
+    <a href="https://linkedin.com/in/lukastuerrde" class="kontakt-link" target="_blank">LinkedIn</a>
+    <a href="https://instagram.com/tuerri_mtb" class="kontakt-link" target="_blank">Instagram</a>
   </div>
 </section>
 
@@ -460,25 +600,9 @@
 </footer>
 
 <script>
-  function togglePi(header) {
-    var body   = header.nextElementSibling;
-    var plus   = header.querySelector('.pi-plus');
-    var isOpen = body.classList.contains('open');
-
-    document.querySelectorAll('.pi-body').forEach(function(b) { b.classList.remove('open'); });
-    document.querySelectorAll('.pi-plus').forEach(function(p) { p.textContent = '+'; p.style.color = ''; });
-
-    if (!isOpen) {
-      body.classList.add('open');
-      plus.textContent = '−';
-      plus.style.color = 'var(--blue)';
-    }
-  }
-</script>
-
-<script>
-window.addEventListener('scroll, function() {
-    var nav = document.querySelector('nav');
+  // Nav transparent → navy beim Scrollen
+  var nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', function() {
     if (window.scrollY > 60) {
       nav.style.background = 'rgba(10,22,40,0.95)';
       nav.style.backdropFilter = 'blur(14px)';
@@ -489,6 +613,30 @@ window.addEventListener('scroll, function() {
       nav.style.borderBottomColor = 'transparent';
     }
   });
+
+  // Portfolio aufklappen
+  function togglePi(header) {
+    var body   = header.nextElementSibling;
+    var plus   = header.querySelector('.pi-plus');
+    var isOpen = body.classList.contains('open');
+    document.querySelectorAll('.pi-body').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.pi-plus').forEach(function(p) { p.textContent = '+'; p.style.color = ''; });
+    if (!isOpen) {
+      body.classList.add('open');
+      plus.textContent = '−';
+      plus.style.color = 'var(--blue)';
+    }
+  }
+
+  // Mobile Menu
+  function toggleMenu() {
+    var menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
 </script>
+
 </body>
 </html>
